@@ -5,3 +5,5 @@ Github connection
 add logo and resources
 add tailwind and google font
 use tailblocks for components https://tailblocks.cc/
+install daisiUI
+add banner

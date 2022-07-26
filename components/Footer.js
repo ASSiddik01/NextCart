@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import logo from "../images/logo.png";
 
@@ -10,7 +11,16 @@ const Footer = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <Image src={logo} alt="" height={60} width={180} />
+              <Link href={"/"}>
+                <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                  <Image
+                    src={logo}
+                    width={180}
+                    height={60}
+                    alt="This is next cart site logo"
+                  />
+                </a>
+              </Link>
               <p>A online store by Next JS</p>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -100,6 +110,7 @@ const Footer = () => {
         </div>
         <div className="bg-gray-100">
           <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+            <span className="mr-1 text-sm">Design &#38; Develop by</span>
             <a
               target="blank"
               href="https://www.facebook.com/A.S.Siddik0/"
@@ -107,7 +118,7 @@ const Footer = () => {
             >
               Abu Shama
             </a>
-            <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
+            <p className="text-sm text-gray-500 sm:ml-1 sm:mt-0 mt-4">
               © {new Date().getFullYear()}. All Rights Reserved
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
