@@ -31,3 +31,7 @@ a {
     background: black;
   }
 }
+
+:root {
+  --n: 0 0% 0%;
+}

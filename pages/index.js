@@ -5,7 +5,6 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <html data-theme="cupcake"></html>
         <title>NextCart | A online store by Next JS</title>
         <meta
           name="description"
