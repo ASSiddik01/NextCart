@@ -3,3 +3,5 @@ run app - npm run dev
 Clean up the project
 Github connection
 add logo and resources
+add tailwind and google font
+use tailblocks for components https://tailblocks.cc/
