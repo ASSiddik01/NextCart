@@ -2,3 +2,4 @@ create app - npx create-next-app@latest
 run app - npm run dev
 Clean up the project
 Github connection
+add logo and resources
