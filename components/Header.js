@@ -33,9 +33,26 @@ const Header = () => {
               <a className="mr-5 hover:text-gray-900">Contact</a>
             </Link>
           </nav>
-          <HiOutlineShoppingCart className="text-primary text-3xl" />
+          <label htmlFor="my-drawer-4" className="">
+            <HiOutlineShoppingCart className="text-primary text-3xl" />
+          </label>
         </div>
       </header>
+
+      <div className="sidebar">
+        <div className="drawer drawer-end absolute">
+          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-side">
+            <label
+              htmlFor="my-drawer-4"
+              className="drawer-overlay hidden"
+            ></label>
+            <div className="menu p-4 overflow-y-auto w-80 bg-orange-100 text-base-content">
+              <h2 className="font-bold text-xl">Your Cart</h2>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
