@@ -3,6 +3,12 @@ import Link from "next/link";
 import React from "react";
 import logo from "../images/logo.png";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import {
+  AiOutlinePlusCircle,
+  AiOutlineMinusCircle,
+  AiOutlineCheckCircle,
+  AiOutlineClear,
+} from "react-icons/ai";
 
 const Header = () => {
   return (
@@ -47,8 +53,43 @@ const Header = () => {
               htmlFor="my-drawer-4"
               className="drawer-overlay hidden"
             ></label>
-            <div className="menu p-4 overflow-y-auto w-80 bg-orange-100 text-base-content">
+            <div className="p-4 w-80 bg-orange-100">
               <h2 className="font-bold text-xl">Your Cart</h2>
+              <ol className="list-decimal px-4 mt-2">
+                <li className="my-2">
+                  <div className="flex">
+                    <div className="text-neutral w-2/3">Product Title</div>
+                    <div className="flex justify-center items-center w-1/3">
+                      <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
+                      <span className="mx-2">2</span>
+                      <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                    </div>
+                  </div>
+                </li>
+                <li className="my-2">
+                  <div className="flex justify-between">
+                    <h3 className="text-neutral w-2/3">Product Title</h3>
+                    <div className="flex justify-center items-center w-1/3">
+                      <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
+                      <span className="mx-2">2</span>
+                      <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                    </div>
+                  </div>
+                </li>
+              </ol>
+              <div className="sidebar_bottom mt-5">
+                <h4 className="text-xl font-bold">
+                  Subtotal: $<span>100</span>
+                </h4>
+                <div className="lg:flex mt-2 ">
+                  <button className="btn btn-sm btn-primary mr-1 capitalize">
+                    <AiOutlineCheckCircle className="mr-1" /> Checkout
+                  </button>
+                  <button className="btn btn-sm btn-primary ml-1 capitalize">
+                    <AiOutlineClear className="mr-1" /> Clear Cart
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

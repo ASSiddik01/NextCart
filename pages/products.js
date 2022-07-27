@@ -14,7 +14,7 @@ const Products = () => {
             <div className="card card-compact bg-orange-50 pt-4 rounded-md lg:max-w-lg shadow-xl cursor-pointer hover:text-primary">
               <figure>
                 <img
-                  className="lg:max-h-[40vh] rounded"
+                  className="lg:max-h-[40vh] rounded  px-4"
                   src="https://i.ibb.co/Sy2Mnxz/tops.webp"
                   alt="product"
                 />
