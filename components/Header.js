@@ -11,90 +11,143 @@ import {
 } from "react-icons/ai";
 
 const Header = () => {
+  const mainMenu = (
+    <>
+      <li>
+        <Link href="/">Home </Link>
+      </li>
+      <li>
+        <Link href="/products">Shop </Link>
+      </li>
+      <li>
+        <Link href="/about">About </Link>
+      </li>
+      <li>
+        <Link href="/contact">Contact </Link>
+      </li>
+    </>
+  );
   return (
-    <div>
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap px-5 py-3 flex-col md:flex-row items-center">
+    <nav className="sticky" >
+      <div className="navbar bg-base-100 lg:px-10 ">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex="0" className="btn btn-ghost flex text-primary">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h7"
+                />
+              </svg>{" "}
+              <span className="lg:block hidden ml-2">Main Menu</span>
+            </label>
+            <ul
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-none rounded-b-lg w-52"
+            >
+              {mainMenu}
+            </ul>
+          </div>
+        </div>
+        <div className="navbar-center">
           <Link href={"/"}>
-            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <a className=" normal-case text-xl">
               <Image
                 src={logo}
-                width={180}
-                height={60}
+                width={160}
+                height={50}
                 alt="This is next cart site logo"
               />
             </a>
           </Link>
-          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <Link href={"/"}>
-              <a className="mr-5 hover:text-gray-900">Home</a>
-            </Link>
-            <Link href={"/products"}>
-              <a className="mr-5 hover:text-gray-900">Shop</a>
-            </Link>
-            <Link href={"/about"}>
-              <a className="mr-5 hover:text-gray-900">About</a>
-            </Link>
-            <Link href={"/contact"}>
-              <a className="mr-5 hover:text-gray-900">Contact</a>
-            </Link>
-          </nav>
-          <label htmlFor="my-drawer-4" className="">
-            <HiOutlineShoppingCart className="text-primary text-3xl" />
-          </label>
         </div>
-      </header>
-
-      <div className="sidebar">
-        <div className="drawer drawer-end absolute">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-side">
-            <label
-              htmlFor="my-drawer-4"
-              className="drawer-overlay hidden"
-            ></label>
-            <div className="p-4 w-80 bg-orange-100">
-              <h2 className="font-bold text-xl">Your Cart</h2>
-              <ol className="list-decimal px-4 mt-2">
-                <li className="my-2">
-                  <div className="flex">
-                    <div className="text-neutral w-2/3">Product Title</div>
-                    <div className="flex justify-center items-center w-1/3">
-                      <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
-                      <span className="mx-2">2</span>
-                      <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+        <div className="navbar-end">
+          <div className="flex items-center">
+            <div className="dropdown dropdown-end">
+              <label tabIndex="0" className="btn btn-ghost btn-circle">
+                <div className="indicator">
+                  <HiOutlineShoppingCart className="text-primary text-3xl" />
+                  <span className="badge badge-sm indicator-item">8</span>
+                </div>
+              </label>
+              <div
+                tabIndex="0"
+                className="mt-3 card card-compact rounded-none rounded-b-lg dropdown-content w-72 bg-base-100 shadow"
+              >
+                <div className="card-body">
+                  <span className="font-bold text-lg">Your Cart</span>
+                  <ol className="list-decimal px-4 mt-2">
+                    <li className="my-2">
+                      <div className="flex">
+                        <div className="text-neutral w-2/3">Product Title</div>
+                        <div className="flex justify-center items-center w-1/3">
+                          <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
+                          <span className="mx-2">2</span>
+                          <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                        </div>
+                      </div>
+                    </li>
+                    <li className="my-2">
+                      <div className="flex justify-between">
+                        <h3 className="text-neutral w-2/3">Product Title</h3>
+                        <div className="flex justify-center items-center w-1/3">
+                          <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
+                          <span className="mx-2">2</span>
+                          <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
+                  <span className="text-info">Subtotal: $999</span>
+                  <div className="card-actions">
+                    <div className="lg:flex mt-2 ">
+                      <button className="btn btn-sm btn-primary mr-1 capitalize">
+                        <AiOutlineCheckCircle className="mr-1" /> Checkout
+                      </button>
+                      <button className="btn btn-sm btn-primary ml-1 capitalize">
+                        <AiOutlineClear className="mr-1" /> Clear Cart
+                      </button>
                     </div>
                   </div>
-                </li>
-                <li className="my-2">
-                  <div className="flex justify-between">
-                    <h3 className="text-neutral w-2/3">Product Title</h3>
-                    <div className="flex justify-center items-center w-1/3">
-                      <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
-                      <span className="mx-2">2</span>
-                      <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
-                    </div>
-                  </div>
-                </li>
-              </ol>
-              <div className="sidebar_bottom mt-5">
-                <h4 className="text-xl font-bold">
-                  Subtotal: $<span>100</span>
-                </h4>
-                <div className="lg:flex mt-2 ">
-                  <button className="btn btn-sm btn-primary mr-1 capitalize">
-                    <AiOutlineCheckCircle className="mr-1" /> Checkout
-                  </button>
-                  <button className="btn btn-sm btn-primary ml-1 capitalize">
-                    <AiOutlineClear className="mr-1" /> Clear Cart
-                  </button>
                 </div>
               </div>
+            </div>
+            <div className="dropdown dropdown-end">
+              <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src="https://placeimg.com/80/80/people" />
+                </div>
+              </label>
+              <ul
+                tabIndex="0"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-b-lg w-52"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
