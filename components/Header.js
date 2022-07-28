@@ -10,7 +10,8 @@ import {
   AiOutlineClear,
 } from "react-icons/ai";
 
-const Header = () => {
+const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
+  console.log(cart, addToCart, removeFromCart, cleatCart, subTotal);
   const mainMenu = (
     <>
       <li>
@@ -28,7 +29,7 @@ const Header = () => {
     </>
   );
   return (
-    <nav className="sticky" >
+    <nav className="sticky">
       <div className="navbar bg-base-100 lg:px-10 ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -85,26 +86,22 @@ const Header = () => {
                 <div className="card-body">
                   <span className="font-bold text-lg">Your Cart</span>
                   <ol className="list-decimal px-4 mt-2">
-                    <li className="my-2">
-                      <div className="flex">
-                        <div className="text-neutral w-2/3">Product Title</div>
-                        <div className="flex justify-center items-center w-1/3">
-                          <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
-                          <span className="mx-2">2</span>
-                          <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
-                        </div>
-                      </div>
-                    </li>
-                    <li className="my-2">
-                      <div className="flex justify-between">
-                        <h3 className="text-neutral w-2/3">Product Title</h3>
-                        <div className="flex justify-center items-center w-1/3">
-                          <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
-                          <span className="mx-2">2</span>
-                          <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
-                        </div>
-                      </div>
-                    </li>
+                    {cart.map((product) => {
+                      return (
+                        <li key={product.itemCode} className="my-2">
+                          <div className="flex">
+                            <div className="text-neutral w-2/3">
+                              Product Title
+                            </div>
+                            <div className="flex justify-center items-center w-1/3">
+                              <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
+                              <span className="mx-2">2</span>
+                              <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ol>
                   <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
@@ -112,7 +109,10 @@ const Header = () => {
                       <button className="btn btn-sm btn-primary mr-1 capitalize">
                         <AiOutlineCheckCircle className="mr-1" /> Checkout
                       </button>
-                      <button className="btn btn-sm btn-primary ml-1 capitalize">
+                      <button
+                        onClick={cleatCart}
+                        className="btn btn-sm btn-primary ml-1 capitalize"
+                      >
                         <AiOutlineClear className="mr-1" /> Clear Cart
                       </button>
                     </div>

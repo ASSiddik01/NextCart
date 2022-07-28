@@ -10,7 +10,7 @@ const Products = () => {
       </Head>
       <div className="mt-10 lg:px-16 px-4">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
-          <Link href={"/"}>
+          <Link href={"/product/T-shirt"}>
             <div className="card card-compact bg-orange-50 pt-4 rounded-md lg:max-w-lg shadow-xl cursor-pointer hover:text-primary">
               <figure>
                 <img
