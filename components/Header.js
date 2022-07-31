@@ -11,7 +11,7 @@ import {
 } from "react-icons/ai";
 
 const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
-  console.log(cart, addToCart, removeFromCart, cleatCart, subTotal);
+  // console.log(cart, addToCart, removeFromCart, cleatCart, subTotal);
   const mainMenu = (
     <>
       <li>
