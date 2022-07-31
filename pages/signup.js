@@ -10,10 +10,7 @@ const Signup = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or
-            <a
-              href="#"
-              className="font-medium text-pink-600 hover:text-pink-500"
-            >
+            <a href="#" className="font-medium text-primary hover:text-primary">
               {" "}
               Login{" "}
             </a>
@@ -33,7 +30,7 @@ const Signup = () => {
                 type="email"
                 autoComplete="email"
                 required=""
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -49,7 +46,7 @@ const Signup = () => {
                 type="password"
                 autoComplete="current-password"
                 required=""
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-pink-500 focus:border-pink-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm"
                 placeholder="Password"
               ></input>
             </div>
@@ -58,7 +55,7 @@ const Signup = () => {
             <div className="text-sm">
               <a
                 href="#"
-                className="font-medium text-pink-600 hover:text-pink-500"
+                className="font-medium text-primary hover:text-primary"
               >
                 {" "}
                 Forgot your password?{" "}
@@ -68,11 +65,11 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 disabled:bg-pink-300"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:bg-secondary"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <svg
-                  className="h-5 w-5 text-pink-500 group-hover:text-pink-400"
+                  className="h-5 w-5 text-primary group-hover:text-secondary"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"

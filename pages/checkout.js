@@ -180,7 +180,7 @@ const Checkout = () => {
         </div> */}
         <button
           disabled=""
-          className="flex items-center justify-center mr-2 text-white bg-primary border-0 py-2 px-2 focus:outline-none hover:bg-primary rounded text-sm disabled:bg-pink-300 "
+          className="flex items-center justify-center mr-2 text-white bg-primary border-0 py-2 px-2 focus:outline-none hover:bg-primary rounded text-sm disabled:bg-secondary "
         >
           <svg
             stroke="currentColor"
