@@ -140,7 +140,9 @@ const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <Link href={"/login"}>
+                    <a>Login</a>
+                  </Link>
                 </li>
               </ul>
             </div>
