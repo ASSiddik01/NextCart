@@ -7,3 +7,7 @@ add tailwind and google font
 use tailblocks for components https://tailblocks.cc/
 install daisiUI
 add banner
+design page 
+install mongo server and composer
+install mongoose
+create model 
