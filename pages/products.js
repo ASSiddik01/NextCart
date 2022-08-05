@@ -15,7 +15,6 @@ const Products = ({ products }) => {
       <div className="mt-10 lg:px-16 px-4 z-0">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 ">
           {products.map((product) => {
-            console.log(product);
             return (
               <div key={product._id}>
                 <Link passHref={true} href={`/product/${product._id}`}>
