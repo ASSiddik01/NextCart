@@ -3,10 +3,14 @@ import { useRouter } from "next/router";
 import mongoose from "mongoose";
 import Products from '../../models/Product';
 
-const Product = ({ item, addToCart }) => {
+const Product = ({ item, clearCart, addToCart }) => {
   const router = useRouter();
   const id = router.query.id;
-  // console.log(item)
+  const buyNow = () => {
+    clearCart();
+    addToCart(item._id, 1, item.price, item.title);
+    router.push('/checkout')
+  }
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
@@ -91,6 +95,9 @@ const Product = ({ item, addToCart }) => {
               <span className="title-font font-medium text-2xl text-gray-900">
                 $ <span>{item.price}</span>
               </span>
+              <button onClick={() => buyNow()} className="flex ml-10 text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
+                Buy Now
+              </button>
               <button onClick={() => addToCart(item._id, 1, item.price, item.title)} className="flex ml-10 text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
                 Add To Cart
               </button>

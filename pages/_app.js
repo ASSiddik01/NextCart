@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }) {
     try {
       if (myCart) {
         setCart(JSON.parse(myCart));
+        saveCart(JSON.parse(myCart));
       }
     } catch (error) {
       console.log(error);
@@ -49,7 +50,6 @@ function MyApp({ Component, pageProps }) {
   // 4
   const removeFromCart = (_id, qty, price, name) => {
     let newCart = cart;
-    console.log(newCart[_id]["qty"])
     if (_id in cart) {
       newCart[_id].qty = cart[_id].qty - qty;
     }

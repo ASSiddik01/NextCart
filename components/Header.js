@@ -12,8 +12,7 @@ import {
 } from "react-icons/ai";
 
 const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
-  console.log(Object.keys(cart).length)
-  // console.log(cart, addToCart, removeFromCart, clearCart, subTotal);
+
   const mainMenu = (
     <>
       <li>
@@ -88,12 +87,10 @@ const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                 <div className="card-body">
                   <span className="font-bold text-lg">Your Cart</span>
                   <ol className="list-decimal px-4 mt-2">
-
                     {Object.keys(cart).length == 0 && <p className="my-4 font-semibold">Empty Cart</p>}
                     {
                       Object.keys(cart).map(item => {
-                        console.log(item)
-                        return <li key={cart[item]._id} className="my-2">
+                        return <li key={item} className="my-2">
                           <div className="flex">
                             <div className="text-neutral w-2/3">
                               {cart[item].name}
@@ -107,14 +104,13 @@ const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                         </li>
                       })
                     }
-
                   </ol>
-                  <span className="text-info">Subtotal: $ {subTotal} </span>
+                  <span className="text-primary">Subtotal: $ {subTotal} </span>
                   <div className="card-actions">
                     <div className="lg:flex mt-2 ">
-                      <button className="btn btn-sm btn-primary mr-1 capitalize">
+                      <Link href={'/checkout'}><button className="btn btn-sm btn-primary mr-1 capitalize">
                         <AiOutlineCheckCircle className="mr-1" /> Checkout
-                      </button>
+                      </button></Link>
                       <button
                         onClick={clearCart}
                         className="btn btn-sm btn-primary ml-1 capitalize"
