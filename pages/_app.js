@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   // 1
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
 
   // 6
@@ -25,45 +25,46 @@ function MyApp({ Component, pageProps }) {
 
   //3
   const saveCart = (newCart) => {
-    localStorage.setItem("cart", newCart);
-    let subtotal = 0;
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    let subTotal = 0;
     const keys = Object.keys(newCart);
     for (let i = 0; i < keys.length; i++) {
-      subtotal = newCart[keys[i]].price * newCart[key[i]].qty;
+      subTotal += newCart[keys[i]].price * newCart[keys[i]].qty;
     }
-    setSubTotal(subtotal);
+    setSubTotal(subTotal);
   };
 
   // 2
-  const addToCart = (itemCode, qty, price, name, size, variant) => {
+  const addToCart = (_id, qty, price, name) => {
     let newCart = cart;
-    if (itemCode in cart) {
-      newCart[itemCode].qty = cart[itemCode].qty + qty;
+    if (_id in cart) {
+      newCart[_id].qty = cart[_id].qty + qty;
     } else {
-      newCart[itemCode] = { qty: 1, price, name, size, variant };
+      newCart[_id] = { qty: 1, price, name };
     }
     setCart(newCart);
     saveCart(newCart);
   };
 
   // 4
-  const removeFromCart = (itemCode, qty, price, name, size, variant) => {
+  const removeFromCart = (_id, qty, price, name) => {
     let newCart = cart;
-    if (itemCode in cart) {
-      newCart[itemCode].qty = cart[itemCode].qty - qty;
+    console.log(newCart[_id]["qty"])
+    if (_id in cart) {
+      newCart[_id].qty = cart[_id].qty - qty;
     }
-    if (newCart[itemCode]["qty"] < 0) {
-      delete newCart[itemCode];
+    if (newCart[_id]["qty"] <= 0) {
+      delete newCart[_id];
     }
     setCart(newCart);
     saveCart(newCart);
   };
 
   // 5
-  const cleatCart = () => {
+  const clearCart = () => {
     setCart({});
     saveCart({});
-    toast("Cart is now empty");
+    toast("Cart is clear");
   };
   return (
     <>
@@ -71,14 +72,14 @@ function MyApp({ Component, pageProps }) {
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
-        cleatCart={cleatCart}
+        clearCart={clearCart}
         subTotal={subTotal}
       />
       <Component
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
-        cleatCart={cleatCart}
+        clearCart={clearCart}
         subTotal={subTotal}
         {...pageProps}
       />

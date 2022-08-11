@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -10,8 +11,9 @@ import {
   AiOutlineClear,
 } from "react-icons/ai";
 
-const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
-  // console.log(cart, addToCart, removeFromCart, cleatCart, subTotal);
+const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+  console.log(Object.keys(cart).length)
+  // console.log(cart, addToCart, removeFromCart, clearCart, subTotal);
   const mainMenu = (
     <>
       <li>
@@ -76,7 +78,7 @@ const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
               <label tabIndex="0" className="btn btn-ghost btn-circle">
                 <div className="indicator">
                   <HiOutlineShoppingCart className="text-primary text-3xl" />
-                  <span className="badge badge-sm indicator-item">8</span>
+                  <span className="badge badge-sm indicator-item"> {Object.keys(cart).length} </span>
                 </div>
               </label>
               <div
@@ -86,31 +88,35 @@ const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
                 <div className="card-body">
                   <span className="font-bold text-lg">Your Cart</span>
                   <ol className="list-decimal px-4 mt-2">
-                    {cart.map((product) => {
-                      return (
-                        <li key={product.itemCode} className="my-2">
+
+                    {Object.keys(cart).length == 0 && <p className="my-4 font-semibold">Empty Cart</p>}
+                    {
+                      Object.keys(cart).map(item => {
+                        console.log(item)
+                        return <li key={cart[item]._id} className="my-2">
                           <div className="flex">
                             <div className="text-neutral w-2/3">
-                              Product Title
+                              {cart[item].name}
                             </div>
                             <div className="flex justify-center items-center w-1/3">
-                              <AiOutlineMinusCircle className="text-primary hover:text-neutral" />
-                              <span className="mx-2">2</span>
-                              <AiOutlinePlusCircle className="text-primary hover:text-neutral" />
+                              <AiOutlineMinusCircle onClick={() => removeFromCart(item, 1)} className="text-primary hover:text-neutral" />
+                              <span className="mx-2"> {cart[item].qty} </span>
+                              <AiOutlinePlusCircle onClick={() => addToCart(item, 1)} className="text-primary hover:text-neutral" />
                             </div>
                           </div>
                         </li>
-                      );
-                    })}
+                      })
+                    }
+
                   </ol>
-                  <span className="text-info">Subtotal: $999</span>
+                  <span className="text-info">Subtotal: $ {subTotal} </span>
                   <div className="card-actions">
                     <div className="lg:flex mt-2 ">
                       <button className="btn btn-sm btn-primary mr-1 capitalize">
                         <AiOutlineCheckCircle className="mr-1" /> Checkout
                       </button>
                       <button
-                        onClick={cleatCart}
+                        onClick={clearCart}
                         className="btn btn-sm btn-primary ml-1 capitalize"
                       >
                         <AiOutlineClear className="mr-1" /> Clear Cart
@@ -123,7 +129,7 @@ const Header = ({ cart, addToCart, removeFromCart, cleatCart, subTotal }) => {
             <div className="dropdown dropdown-end">
               <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="https://placeimg.com/80/80/people" />
+                  <img src="https://placeimg.com/80/80/people" alt="" />
                 </div>
               </label>
               <ul
