@@ -9,11 +9,10 @@ const handler = async (req, res) => {
             let p = Product({
                 id: req.body[i].id,
                 title: req.body[i].title,
-                desc: req.body[i].desc,
-                img: req.body[i].img,
+                description: req.body[i].description,
+                thumbnail: req.body[i].thumbnail,
                 category: req.body[i].category,
-                size: req.body[i].size,
-                color: req.body[i].color,
+                brand: req.body[i].brand,
                 price: req.body[i].price,
                 availableQty: req.body[i].availableQty,
             })

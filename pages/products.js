@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
@@ -27,7 +28,6 @@ const Products = ({ products }) => {
                         }
                       `}</style>
                       <img
-                        // className="lg:max-h-[40vh] rounded  px-4"
                         className="height_250 rounded  px-4"
                         src={product.thumbnail}
                         alt="product"
