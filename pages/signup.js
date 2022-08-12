@@ -1,16 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
+import { toast } from "react-toastify";
 
 const Signup = () => {
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const user = {
+      name, email, password
+    }
 
-    console.log(name, email, password)
+    let res = await fetch('http://localhost:3000/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+    const response = await res.json()
+
+    if (response.success) {
+      toast("Signup successfully")
+    }
 
 
     e.target.name.value = '';
