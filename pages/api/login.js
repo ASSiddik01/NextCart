@@ -2,12 +2,15 @@
 
 import connectDb from "../../middleware/mongoose"
 import User from "../../models/User"
+var CryptoJS = require("crypto-js");
 
 const handler = async (req, res) => {
     if (req.method == "POST") {
         let u = await User.findOne({ "email": req.body.email });
         if (u) {
-            if (req.body.email == u.email && req.body.password == u.password) {
+            console.log(u.password)
+            console.log(CryptoJS.AES.decrypt(u.password, "secret123").toString(CryptoJS.enc.Utf8))
+            if (req.body.email == u.email && req.body.password == CryptoJS.AES.decrypt(u.password, "secret123").toString(CryptoJS.enc.Utf8)) {
                 res.status(200).json({ success: true, email: u.email, name: u.name })
             } else {
                 res.status(200).json({ success: false, error: "Wrong Password" })
