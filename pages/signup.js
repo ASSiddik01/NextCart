@@ -4,7 +4,6 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -24,13 +23,11 @@ const Signup = () => {
     const response = await res.json()
 
     if (response.success) {
-      toast("Signup successfully")
+      toast("Signup successfully");
+      e.target.name.value = '';
+      e.target.email.value = '';
+      e.target.password.value = '';
     }
-
-
-    e.target.name.value = '';
-    e.target.email.value = '';
-    e.target.password.value = '';
   }
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
