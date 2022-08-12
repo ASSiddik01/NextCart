@@ -1,7 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React from "react";
 
 const Signup = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    console.log(name, email, password)
+
+
+    e.target.name.value = '';
+    e.target.email.value = '';
+    e.target.password.value = '';
+  }
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -23,7 +38,7 @@ const Signup = () => {
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6" method="POST">
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -32,7 +47,7 @@ const Signup = () => {
               </label>
               <input
                 id="name"
-                name="email"
+                name="name"
                 type="text"
                 autoComplete="text"
                 required
@@ -41,11 +56,11 @@ const Signup = () => {
               />
             </div>
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email address
               </label>
               <input
-                id="email-address"
+                id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
