@@ -11,7 +11,9 @@ import {
   AiOutlineClear,
 } from "react-icons/ai";
 
-const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+import { HiOutlineMenuAlt1, HiOutlineUserCircle } from 'react-icons/hi';
+
+const Header = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
   const mainMenu = (
     <>
@@ -35,20 +37,7 @@ const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost flex text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>{" "}
+              <HiOutlineMenuAlt1 className="text-2xl" />
               <span className="lg:block hidden ml-2">Main Menu</span>
             </label>
             <ul
@@ -125,7 +114,7 @@ const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             <div className="dropdown dropdown-end">
               <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="https://placeimg.com/80/80/people" alt="" />
+                  <HiOutlineUserCircle className="text-3xl mt-1 ml-1" />
                 </div>
               </label>
               <ul
@@ -133,19 +122,25 @@ const Header = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-b-lg w-52"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
+                  <Link href={"/myaccount"}>
+                    <a className="justify-between">
+                      Profile
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link href={"/order"}>
+                    <a>Orders</a>
+                  </Link>
                 </li>
-                <li>
+                {user.value && <li onClick={logout}>
+                  <a>Log Out</a>
+                </li>}
+                {!user.value && <li>
                   <Link href={"/login"}>
                     <a>Login</a>
                   </Link>
-                </li>
+                </li>}
               </ul>
             </div>
           </div>

@@ -33,7 +33,6 @@ const Login = () => {
     } else {
       toast.error(response.error)
     }
-    console.log(user);
   }
 
   return (

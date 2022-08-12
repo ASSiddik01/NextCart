@@ -4,11 +4,17 @@ import Header from "../components/Header";
 import "../styles/globals.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
+  // 9
+  const router = useRouter()
   // 1
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+  // 7
+  const [user, setUser] = useState({ value: null })
+  const [key, setKey] = useState(0)
 
   // 6
   useEffect(() => {
@@ -22,7 +28,13 @@ function MyApp({ Component, pageProps }) {
       console.log(error);
       localStorage.clear();
     }
-  }, []);
+    // 8
+    const token = localStorage.getItem('token')
+    if (token) {
+      setUser({ value: token })
+      setKey(Math.random())
+    }
+  }, [router.query]);
 
   //3
   const saveCart = (newCart) => {
@@ -66,9 +78,22 @@ function MyApp({ Component, pageProps }) {
     saveCart({});
     toast("Cart is clear");
   };
+
+  // 10
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser({ value: null })
+    setKey(Math.random());
+  }
+
+
+
   return (
     <>
       <Header
+        logout={logout}
+        user={user}
+        key={key}
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
