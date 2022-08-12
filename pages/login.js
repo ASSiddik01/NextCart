@@ -25,6 +25,7 @@ const Login = () => {
     const response = await res.json()
 
     if (response.success) {
+      localStorage.setItem('token', response.token)
       toast("Login successfully");
       e.target.email.value = '';
       e.target.password.value = '';
