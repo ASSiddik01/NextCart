@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   // 9
-  const router = useRouter()
+
   // 1
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
