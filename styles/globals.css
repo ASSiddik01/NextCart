@@ -35,3 +35,7 @@ a {
 :root {
   --n: 0 0% 0%;
 }
+
+.table th:first-child {
+  position: static;
+}

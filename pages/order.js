@@ -17,15 +17,16 @@ const Order = ({ subTotal, cart }) => {
                             <table className="table table-compact w-full">
                                 <thead>
                                     <tr className='border-b'>
+                                        <th className='bg-inherit'>SL</th>
                                         <th className='bg-inherit'>Item Name</th>
                                         <th className='bg-inherit'>Quantity</th>
                                         <th className='bg-inherit'>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Object.keys(cart).map(item => {
-                                        console.log(cart[item].qty)
+                                    {Object.keys(cart).map((item, index) => {
                                         return <tr key={item}>
+                                            <th>{index + 1}</th>
                                             <td>{cart[item].name}</td>
                                             <td>{cart[item].qty}</td>
                                             <td>{cart[item].qty * cart[item].price}</td>

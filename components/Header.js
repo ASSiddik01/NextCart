@@ -128,7 +128,7 @@ const Header = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subT
                   </Link>
                 </li>
                 <li>
-                  <Link href={"/order"}>
+                  <Link href={"/orders"}>
                     <a>Orders</a>
                   </Link>
                 </li>

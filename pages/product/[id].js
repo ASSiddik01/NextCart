@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import Router from "next/router";
+
 import mongoose from "mongoose";
 import Products from '../../models/Product';
+import { useRouter } from 'next/router';
 
 const Product = ({ item, clearCart, addToCart }) => {
-
-  const id = router.query.id;
+  const router = useRouter()
   const buyNow = () => {
     clearCart();
     addToCart(item._id, 1, item.price, item.title);
