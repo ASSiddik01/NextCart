@@ -22,7 +22,7 @@ const Login = () => {
     const password = e.target.password.value;
     const user = { email, password }
 
-    let res = await fetch('http://localhost:3000/api/login', {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const Login = () => {
       toast("Login successfully");
       e.target.email.value = '';
       e.target.password.value = '';
-      Router.push('http://localhost:3000')
+      Router.push('/')
     } else {
       toast.error(response.error)
     }
