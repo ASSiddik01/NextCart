@@ -4,20 +4,29 @@ import Header from "../components/Header";
 import "../styles/globals.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
+import LoadingBar from 'react-top-loading-bar'
+
 
 function MyApp({ Component, pageProps }) {
   // 9
-
+  const router = useRouter();
   // 1
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
   // 7
   const [user, setUser] = useState({ value: null })
   const [key, setKey] = useState(0)
+  // 11
+  const [progress, setProgress] = useState(0)
 
   // 6
   useEffect(() => {
+    // 11
+    Router.events.on('routeChangeStart', () => {
+      setProgress(100);
+    })
+
     const myCart = localStorage.getItem("cart");
     try {
       if (myCart) {
@@ -90,6 +99,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <LoadingBar
+        color='#fa4d21'
+        progress={progress}
+        waitingTime={500}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Header
         logout={logout}
         user={user}

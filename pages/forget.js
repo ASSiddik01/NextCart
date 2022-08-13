@@ -1,7 +1,15 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import Router from "next/router";
 
 const Forget = () => {
+  // redirect
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      Router.push("/")
+    }
+  }, [])
+
   return (
     <div>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
+import Router from "next/router";
 import mongoose from "mongoose";
 import Products from '../../models/Product';
 
 const Product = ({ item, clearCart, addToCart }) => {
-  const router = useRouter();
+
   const id = router.query.id;
   const buyNow = () => {
     clearCart();
     addToCart(item._id, 1, item.price, item.title);
-    router.push('/checkout')
+    Router.push('/checkout')
   }
   return (
     <section className="text-gray-600 body-font overflow-hidden">

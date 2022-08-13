@@ -1,12 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { toast } from "react-toastify";
+import { useEffect } from 'react';
 
 
 const Login = () => {
-  const router = useRouter();
+  // redirect
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      Router.push("/")
+    }
+  }, [])
+
 
 
   const handleSubmit = async (e) => {
@@ -29,7 +36,7 @@ const Login = () => {
       toast("Login successfully");
       e.target.email.value = '';
       e.target.password.value = '';
-      router.push('http://localhost:3000')
+      Router.push('http://localhost:3000')
     } else {
       toast.error(response.error)
     }

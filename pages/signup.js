@@ -1,9 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
+import Router from "next/router";
 
 const Signup = () => {
+  // redirect
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      Router.push("/")
+    }
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;

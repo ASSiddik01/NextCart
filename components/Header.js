@@ -10,7 +10,6 @@ import {
   AiOutlineCheckCircle,
   AiOutlineClear,
 } from "react-icons/ai";
-
 import { HiOutlineMenuAlt1, HiOutlineUserCircle } from 'react-icons/hi';
 
 const Header = ({ logout, user, cart, addToCart, removeFromCart, clearCart, subTotal }) => {
